@@ -1,0 +1,120 @@
+{
+  "position": "top",
+  "layer": "top",
+  "height": 45,
+  "margin-top": 0,
+  "margin-bottom": -15,
+  "margin-left": 0,
+  "margin-right": 0,
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "backlight",
+    "battery"
+  ],
+
+  "hyprland/workspaces": {
+    "active-only": false,
+    "all-outputs": true,
+    "disable-scroll": false,
+    "on-scroll-up": "hyprctl dispatch workspace -1",
+    "on-scroll-down": "hyprctl dispatch workspace +1",
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+      "default": "",  // Icono para workspaces inactivos
+      "active": ""   // Icono para el workspace activo
+    }
+  },
+
+  "clock": {
+    "format": "<span foreground='#6D8895' font='14.5' rise='-1000'></span>{:%I:%M %p}",
+    "format-alt": "<span foreground='#6D8895' font='14.5' rise='-1000'></span>{:%d/%m/%Y}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "timezone": "America/Bogota",  // Especificar la zona horaria correcta
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ffffff'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#66FBFF'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 5
+  },
+ 
+  "pulseaudio": {
+    "format": "<span foreground='#6C77BB' font='14.5' rise='-1000'>{icon}</span> {volume}%",
+    "format-muted": "<span font='14.5' rise='-1000'>󰝟 </span>Mute",
+    "format-icons": {
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
+    },
+    "on-click": "pamixer --toggle-mute",
+    "on-scroll-up": "pamixer --increase 5",
+    "on-scroll-down": "pamixer --decrease 5",
+    "scroll-step": 5,
+    "on-click-right": "pavucontrol"
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "<span foreground='#6C77BB' font='14.5' rise='-1000'></span> {percent}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "on-scroll-up": "brightnessctl s +5%",
+    "on-scroll-down": "brightnessctl s 5%-"
+  },
+  
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}  {capacity}%",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{icon} {time}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  }
+}
