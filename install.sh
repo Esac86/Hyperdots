@@ -3,7 +3,7 @@
 # Variables
 CONFIG_DIR="$HOME/.config"
 REPO_CONFIG_DIR="./config"
-PACKAGE_LIST="hyprland waybar swaybg"  # Añade aquí los paquetes que quieras instalar
+PACKAGE_LIST="hyprland waybar swaybg kitty wofi dolphin"  # Añade aquí los paquetes que quieras instalar
 
 # Función para mostrar la interfaz de inicio
 show_interface() {
@@ -18,6 +18,8 @@ show_interface() {
 
 # Función para instalar paquetes
 install_packages() {
+    echo "Actualizando Repositorios..."
+    sudo pacman -Syu
     echo "Instalando paquetes..."
     sudo pacman -S $PACKAGE_LIST
 }
